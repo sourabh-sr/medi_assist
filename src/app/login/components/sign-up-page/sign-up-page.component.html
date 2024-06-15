@@ -1,0 +1,53 @@
+<section class="signUpForm">
+    <div fxLayout="column" class="parentClass">
+        <div fxLayout="row" fxLayoutAlign="center center" class="headerImage">
+            <img fxFlex="30" fxFlex.xs="100" src="assets/images/health_ai.jpeg" alt="Your Company" width="100%"
+                height="100px">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="header">
+            <h2 fxFlex="30" fxFlex.xs="100" class="label">Sign in to your account</h2>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="body">
+            <div fxLayout="column" class="signUpFormDetails" fxFlex.lg="30" fxFlex.xs="100">
+                <div class="details">
+                    <label class="block text-sm font-medium leading-6 text-gray-900">User Name</label>
+                    <div class="mt-2">
+                        <input autocomplete="off" type="text" required class="custom_input" [(ngModel)]="userName">
+                    </div>
+                </div>
+                <div class="details">
+                    <label class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
+                    <div class="mt-2">
+                        <input autocomplete="off" type="text" required class="custom_input" [(ngModel)]="email">
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                    </div>
+                    <div class="mt-2">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                            class="custom_input" [(ngModel)]="password">
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Re-Enter
+                            Password</label>
+                    </div>
+                    <div class="mt-2">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                            class="custom_input" [(ngModel)]="rePassword">
+                    </div>
+                </div>
+
+                <div class="buttonGroup details" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button type="submit" class="btn_reset" (click)="backToSignIn()">Back</button>
+                    <button type="submit" class="btn_primary" (click)="backToSignIn()"
+                        [disabled]="!userName || !email || !password || !rePassword || (password != rePassword)">Sign
+                        Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

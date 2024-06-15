@@ -1,0 +1,38 @@
+// @use "/src/mixin" as mixin;
+
+html, body { height: 100%; }
+body { box-sizing: border-box; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom_input {
+    height: 42px;
+    width: 100%;
+    padding-left: 5px;
+    border-radius: 8px;
+    border: 1px solid #D3D3D3;
+    box-sizing: border-box;
+}
+
+.btn_primary {
+    background: #005cbb !important;
+    border: 1px solid #005cbb;
+    color: #fff !important;
+    height: 42px !important;
+    border-radius: 8px !important;
+    width: 100%;
+
+    &:disabled {
+        cursor: not-allowed;
+        background: #8F949C;
+        border: 1px solid #8F949C;
+        opacity: .6;
+    }
+}
+
+.btn_reset {
+    background: #fff !important;
+    color: #005cbb !important;
+    border: 1px solid #005cbb;
+    height: 42px !important;
+    border-radius: 8px !important;
+    width: 100%;
+}

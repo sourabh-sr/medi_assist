@@ -1,0 +1,24 @@
+<section class="chatDashboard">
+    <app-user-info-screen></app-user-info-screen>
+    <section class="chatScreen">
+        <div class="chat-container" fxLayout="column" #chatContainer>
+            <div class="message" *ngFor="let message of messages">
+                <div class="message-content" [ngClass]="{'sent': message.sentByMe, 'received': !message.sentByMe}">
+                    {{ message.text }}
+                </div>
+            </div>
+        </div>
+        <!-- <div class="input-container" fxLayout="row" fxLayoutAlign="end end">
+            <input (keyup.enter)="sendMessage()"  type="text" [(ngModel)]="newMessage" placeholder="Type your message...">
+            <button (click)="sendMessage() ">Send</button>
+        </div> -->
+        <div class="chat-input-container">
+            <textarea (keyup.enter)="sendMessage()" [(ngModel)]="newMessage" class="chat-input" placeholder="Type your message..."></textarea>
+            <button class="send-button" (click)="sendMessage() ">
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+          
+    </section>
+   
+</section>

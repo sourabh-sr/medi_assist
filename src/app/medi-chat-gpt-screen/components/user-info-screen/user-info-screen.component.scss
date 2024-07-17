@@ -1,0 +1,60 @@
+.userInfoScreen {
+    .example-headers-align {
+        .margin_top_10 {
+            margin-top: 10px !important;
+        }
+
+        .usenameInput {
+            label {
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+            input {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .two_in_row {
+            .margin_right {
+                margin-right: 10px;
+            }
+        }
+
+        .btnGrp {
+            button:hover {
+                border: 1px solid black;
+            }
+        }
+    }
+
+    .mat-expansion-panel {
+        color: #fff !important;
+    }
+    .mat-expansion-indicator::after {
+        color: #fff !important;
+    }
+    mat-expansion-panel-header {
+        background: #424242 !important;
+    }
+    .mat-expansion-panel-header-title {
+        color: #fff !important;
+        flex-grow: 10 !important;
+    }
+
+    .mat-expansion-panel-header-description {
+        flex-grow: 1 !important;
+        color: #fff !important;
+    }
+
+    .mat-expansion-indicator {
+        color: #fff !important;
+    }
+
+}
+
+::ng-deep .mat-expansion-panel-body {
+    background-color: #F4F8FD;
+    color: black;
+}

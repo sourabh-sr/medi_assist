@@ -2,10 +2,17 @@
 	<app-user-info-screen (patientDataAquired)="isPatientDataAquired($event)"></app-user-info-screen>
 	<section class="chatScreen" *ngIf="patientDataAquired">
 		<div class="chat-container" fxLayout="column" #chatContainer>
-			<div class="message" *ngFor="let message of messages">
+			<div class="message" *ngFor="let message of messages; let last = last">
 				<div class="message-content"
 					[ngClass]="{'sent': message.sentByMe, 'received': !message.sentByMe}">
 					{{ message.text }}
+				</div>
+				<div *ngIf="loading && last" class="typing-loader">
+					<ng-container  *ngIf="loading">
+						<div class="dot"></div>
+						<div class="dot"></div>
+						<div class="dot"></div>
+					</ng-container>
 				</div>
 			</div>
 		</div>

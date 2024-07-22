@@ -1,60 +1,51 @@
 .userInfoScreen {
-    .example-headers-align {
-        .margin_top_10 {
-            margin-top: 10px !important;
+
+    .header {
+        background: #ed803a !important;
+        font-size: 16px;
+        color: #fff !important;
+    }
+
+    mat-panel-title,
+    mat-panel-description {
+        color: #fff !important;
+    }
+
+    .inputSection {
+
+        input,
+        ng-select {
+            margin: 8px 0px;
         }
 
-        .usenameInput {
-            label {
-                font-size: 14px;
-                font-weight: 400;
-            }
-
-            input {
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
+        .margin_right {
+            margin-right: 10px;
         }
 
-        .two_in_row {
-            .margin_right {
-                margin-right: 10px;
-            }
-        }
-
-        .btnGrp {
-            button:hover {
-                border: 1px solid black;
-            }
+        .btn_primary {
+            width: 30%;
+            border-radius: 24px !important;
+            background: #237d9e !important;
+            margin: 10px 0px 8px;
         }
     }
 
-    .mat-expansion-panel {
-        color: #fff !important;
-    }
-    .mat-expansion-indicator::after {
-        color: #fff !important;
-    }
-    mat-expansion-panel-header {
-        background: #424242 !important;
-    }
-    .mat-expansion-panel-header-title {
-        color: #fff !important;
-        flex-grow: 10 !important;
-    }
-
-    .mat-expansion-panel-header-description {
-        flex-grow: 1 !important;
-        color: #fff !important;
+    .auto-resize-textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: visible;
+        resize: none;
+        min-height: 50px;
+        line-height: 21px;
+        margin-bottom: 4px !important;
+        margin-top: 8px !important;
     }
 
-    .mat-expansion-indicator {
-        color: #fff !important;
+    .auto-resize-textarea::placeholder {
+        color: rgba(0, 0, 0, 0.6);
+        font-family: Roboto, "Helvetica Neue", sans-serif;
     }
-
-}
-
-::ng-deep .mat-expansion-panel-body {
-    background-color: #F4F8FD;
-    color: black;
 }

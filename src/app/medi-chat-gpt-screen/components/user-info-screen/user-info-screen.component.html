@@ -1,99 +1,147 @@
 <section class="userInfoScreen">
-    <mat-accordion class="example-headers-align" multi>
+    <mat-accordion class="example-headers-align">
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Personal data
+            <mat-expansion-panel-header  class="header" [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
+                <mat-panel-title fxFlex="80">
+                    <span *ngIf="true">Enter Patient Details to Proceed</span>
+                    <span *ngIf="false">Patient Details</span>
                 </mat-panel-title>
-                <mat-panel-description>
-                    <mat-icon>account_circle</mat-icon>
-                </mat-panel-description>
             </mat-expansion-panel-header>
-            <div fxLayout="row" class="margin_top_10">
-                <div fxFlex="100" class="usenameInput">
-                    <label for="">Patient ID</label>
-                    <input class="custom_input" [(ngModel)]="patient_id"/>
+            <div fxLayout="column" class="inputSection">
+                <div fxLayout="row" class="margin_top_10">
+                    <div fxFlex="100" class="usenameInput">
+                        <input placeholder="Patient ID" class="custom_input" [(ngModel)]="patient_id" />
+                    </div>
                 </div>
-            </div>
-            <div fxLayout="row">
-                <div fxFlex="100" class="usenameInput">
-                    <label for="">Patient Name</label>
-                    <input class="custom_input" [(ngModel)]="patient_name"/>
+                <div fxLayout="row">
+                    <div fxFlex="100" class="usenameInput">
+                        <input placeholder="Patient Name" class="custom_input" [(ngModel)]="patient_name" />
+                    </div>
                 </div>
-            </div>
-            <div fxLayout="row" class="two_in_row">
-                <div fxFlex="50" class="usenameInput margin_right">
-                    <label for="">Age(In Weeks)</label>
-                    <input class="custom_input" />
+                <div fxLayout="row" class="two_in_row">
+                    <div fxFlex="50" class="usenameInput margin_right">
+                        <input placeholder="Age(In Weeks)" class="custom_input" [(ngModel)]="age" />
+                    </div>
+                    <div fxFlex="50" class="usenameInput">
+                        <ng-select placeholder="Birth Order" [items]="birthOrders" [(ngModel)]="birth_order"> </ng-select>
+                    </div>
                 </div>
-                <div fxFlex="50" class="usenameInput">
-                    <label for="">Birth Order</label>
-                    <ng-select [items]="birthOrders" [(ngModel)]="birth_order"> </ng-select>
+                <div fxLayout="row" class="two_in_row">
+                    <div fxFlex="50" class="usenameInput margin_right">
+                        <input placeholder="Birth Weight" class="custom_input" [(ngModel)]="birth_weight" />
+                    </div>
+                    <div fxFlex="50" class="usenameInput">
+                        <input placeholder="Current Weight" class="custom_input" [(ngModel)]="current_weight" />
+                    </div>
                 </div>
-            </div>
-            <div fxLayout="row" class="two_in_row">
-                <div fxFlex="50" class="usenameInput margin_right">
-                    <label for="">Birth Weight</label>
-                    <input class="custom_input"  [(ngModel)]="birth_weight"/>
+                <div fxLayout="row" class="margin_top_10 two_in_row">
+                    <div fxFlex="50" class="usenameInput margin_right">
+                        <ng-select class="cust-select-box" [items]="routes" placeholder="Select Route" [(ngModel)]="route">
+                            <ng-template ng-option-tmp let-item="item" let-$item="item$" let-index="index">
+                                {{item}}
+                            </ng-template>
+                        </ng-select>
+                    </div>
+                    <div fxFlex="50" class="usenameInput">
+                        <input placeholder="Indication" class="custom_input" [(ngModel)]="indication" />
+                    </div>
                 </div>
-                <div fxFlex="50" class="usenameInput">
-                    <label for="">Current Weight</label>
-                    <input class="custom_input" [(ngModel)]="current_weight"/>
+                <div fxLayout="row">
+                    <div fxFlex class="usenameInput">
+                        <textarea [(ngModel)]="medication" (input)="onInput($event)" class="auto-resize-textarea"
+                            placeholder="Medication ...."  #textarea></textarea>
+                    </div>
                 </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="end end" class="btnGrp">
-                <button mat-button color="primary" (click)="nextStep()">Next</button>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-            <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'64px'">
-                <mat-panel-title>
-                    Medical data
-                </mat-panel-title>
-                <mat-panel-description>
-                    <mat-icon>medical_information</mat-icon>
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div fxLayout="row" class="margin_top_10 two_in_row">
-                <div fxFlex="50" class="usenameInput margin_right">
-                    <label for="">Route</label>
-                    <ng-select class="cust-select-box" [items]="routes" placeholder="Select Route" [(ngModel)]="route">
-                        <ng-template ng-option-tmp let-item="item" let-$item="item$" let-index="index">
-                            {{item}}
-                        </ng-template>
-                    </ng-select>
+                <div fxLayout="row" class="two_in_row">
+                    <div fxFlex="50" class="usenameInput margin_right">
+                        <input placeholder="Dose" class="custom_input" [(ngModel)]="dose" />
+                    </div>
+                    <div fxFlex="50" class="usenameInput">
+                        <input placeholder="Frequency" class="custom_input" [(ngModel)]="frequency" />
+                    </div>
                 </div>
-                <div fxFlex="50" class="usenameInput">
-                    <label for="">Indication</label>
-                    <input class="custom_input" [(ngModel)]="indication"/>
+                <div fxLayout="row">
+                    <div fxFlex class="usenameInput">
+                        <input placeholder="Doctor Name" class="custom_input" [(ngModel)]="doctor_name" />
+                    </div>
                 </div>
-            </div>
-            <div fxLayout="row">
-                <div fxFlex class="usenameInput">
-                    <label for="">Medication</label>
-                    <input class="custom_input" [(ngModel)]="medication"/>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                    <button class="btn_primary" (click)="nextStep()">Submit</button>
                 </div>
-            </div>
-            <div fxLayout="row" class="two_in_row">
-                <div fxFlex="50" class="usenameInput margin_right">
-                    <label for="">Dose</label>
-                    <input class="custom_input" [(ngModel)]="dose"/>
-                </div>
-                <div fxFlex="50" class="usenameInput">
-                    <label for="">Frequency</label>
-                    <input class="custom_input" [(ngModel)]="frequency"/>
-                </div>
-            </div>
-            <div fxLayout="row">
-                <div fxFlex class="usenameInput">
-                    <label for="">Doctor Name</label>
-                    <input class="custom_input" [(ngModel)]="doctor_name"/>
-                </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="end end" class="btnGrp">
-                <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button mat-button color="primary" (click)="nextStep()">End</button>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
 </section>
+
+
+
+<!-- <section class="userInfoScreen">
+    <div fxLayout="row" class="header">
+        <span *ngIf="true">Enter Patient Details to Proceed</span>
+        <span *ngIf="false">Patient Details</span>
+    </div>
+    <div fxLayout="column" class="inputSection">
+        <div fxLayout="row" class="margin_top_10">
+            <div fxFlex="100" class="usenameInput">
+                <input placeholder="Patient ID" class="custom_input" [(ngModel)]="patient_id" />
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex="100" class="usenameInput">
+                <input placeholder="Patient Name" class="custom_input" [(ngModel)]="patient_name" />
+            </div>
+        </div>
+        <div fxLayout="row" class="two_in_row">
+            <div fxFlex="50" class="usenameInput margin_right">
+                <input placeholder="Age(In Weeks)" class="custom_input" [(ngModel)]="age" />
+            </div>
+            <div fxFlex="50" class="usenameInput">
+                <ng-select placeholder="Birth Order" [items]="birthOrders" [(ngModel)]="birth_order"> </ng-select>
+            </div>
+        </div>
+        <div fxLayout="row" class="two_in_row">
+            <div fxFlex="50" class="usenameInput margin_right">
+                <input placeholder="Birth Weight" class="custom_input" [(ngModel)]="birth_weight" />
+            </div>
+            <div fxFlex="50" class="usenameInput">
+                <input placeholder="Current Weight" class="custom_input" [(ngModel)]="current_weight" />
+            </div>
+        </div>
+        <div fxLayout="row" class="margin_top_10 two_in_row">
+            <div fxFlex="50" class="usenameInput margin_right">
+                <ng-select class="cust-select-box" [items]="routes" placeholder="Select Route" [(ngModel)]="route">
+                    <ng-template ng-option-tmp let-item="item" let-$item="item$" let-index="index">
+                        {{item}}
+                    </ng-template>
+                </ng-select>
+            </div>
+            <div fxFlex="50" class="usenameInput">
+                <input placeholder="Indication" class="custom_input" [(ngModel)]="indication" />
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex class="usenameInput">
+                <textarea [(ngModel)]="medication" (input)="onInput($event)" class="auto-resize-textarea"
+                    placeholder="Medication ...."  #textarea></textarea>
+            </div>
+        </div>
+        <div fxLayout="row" class="two_in_row">
+            <div fxFlex="50" class="usenameInput margin_right">
+                <input placeholder="Dose" class="custom_input" [(ngModel)]="dose" />
+            </div>
+            <div fxFlex="50" class="usenameInput">
+                <input placeholder="Frequency" class="custom_input" [(ngModel)]="frequency" />
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex class="usenameInput">
+                <input placeholder="Doctor Name" class="custom_input" [(ngModel)]="doctor_name" />
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button class="btn_primary" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</section> -->
+
+<!--[disabled]="!patient_id || !patient_name || !age || !birth_order || !birth_weight || !current_weight || !route || !indication || !medication || !dose || !frequency || !doctor_name"-->

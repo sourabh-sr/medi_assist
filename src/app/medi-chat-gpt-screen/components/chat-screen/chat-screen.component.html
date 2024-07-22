@@ -1,18 +1,14 @@
 <section class="chatDashboard">
-	<app-user-info-screen></app-user-info-screen>
-	<section class="chatScreen">
+	<app-user-info-screen (patientDataAquired)="isPatientDataAquired($event)"></app-user-info-screen>
+	<section class="chatScreen" *ngIf="patientDataAquired">
 		<div class="chat-container" fxLayout="column" #chatContainer>
 			<div class="message" *ngFor="let message of messages">
-				<div *ngIf="!message.sentByMe" class="message-content"
+				<div class="message-content"
 					[ngClass]="{'sent': message.sentByMe, 'received': !message.sentByMe}">
 					{{ message.text }}
 				</div>
 			</div>
 		</div>
-		<!-- <div class="input-container" fxLayout="row" fxLayoutAlign="end end">
-            <input (keyup.enter)="sendMessage()"  type="text" [(ngModel)]="newMessage" placeholder="Type your message...">
-            <button (click)="sendMessage() ">Send</button>
-        </div> -->
 		<div class="chat-input-container">
 			<textarea (keyup.enter)="sendMessage()" [(ngModel)]="newMessage" class="chat-input"
 				placeholder="Type your message..."></textarea>

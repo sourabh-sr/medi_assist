@@ -47,7 +47,7 @@ body {
 
 .cust-select-box {
 	.ng-select-container {
-		min-height: 40px;
+		min-height: 42px;
 		border: 1px solid #E2E5E9;
 		border-radius: 8px !important;
 	}
@@ -60,4 +60,15 @@ body {
 
 .mat-expansion-indicator::after {
 	color: #fff !important;
+}
+.ng-select.ng-select-single .ng-select-container {
+	height: 42px !important;
+	border-radius: 8px;
+}
+.userInfoScreen {
+	.mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+            padding: 15px !important;
+        }
+    }
 }

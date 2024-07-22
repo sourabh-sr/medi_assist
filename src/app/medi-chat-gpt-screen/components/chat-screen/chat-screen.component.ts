@@ -9,6 +9,7 @@ import { MediChatGptScreenService } from '../../services/medi-chat-gpt-screen.se
 export class ChatScreenComponent {
 	messages: { text: string, sentByMe: boolean }[] = [];
 	newMessage: string = '';
+	patientDataAquired: boolean = false;
 	@ViewChild('chatContainer') private chatContainerRef!: ElementRef;
 
 	constructor(private renderer: Renderer2, private service: MediChatGptScreenService) {
@@ -36,5 +37,9 @@ export class ChatScreenComponent {
 
 			}
 		})
+	}
+
+	isPatientDataAquired(flag: any) {
+		this.patientDataAquired = flag.patientDataAquired;
 	}
 }

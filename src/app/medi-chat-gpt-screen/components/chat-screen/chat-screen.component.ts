@@ -7,7 +7,7 @@ import { MediChatGptScreenService } from '../../services/medi-chat-gpt-screen.se
 	styleUrl: './chat-screen.component.scss'
 })
 export class ChatScreenComponent implements AfterViewInit {
-	patientDataAquired: boolean = false;
+	patientDataAquired: any;
 	messages: { text: string, sentByMe: boolean }[] = [];
 	newMessage: string = '';
 	loading = false; // Flag to indicate if loading is happening
@@ -20,7 +20,13 @@ export class ChatScreenComponent implements AfterViewInit {
 		this.scrollToBottom();
 	}
 
+	sendMessageOnEnter(event: Event) {
+		event.preventDefault();
+		this.sendMessage();
+	}
+
 	sendMessage() {
+		
 		if (this.newMessage.trim() !== '') {
 			this.messages.push({ text: this.newMessage, sentByMe: true });
 
@@ -35,7 +41,9 @@ export class ChatScreenComponent implements AfterViewInit {
 
 	receiveMsg() {
 		this.loading = true;
-		this.service.receiveMsg(this.newMessage).subscribe({
+		let params: any = {...this.patientDataAquired}
+		params['prompt'] = this.newMessage
+		this.service.receiveMsg(params).subscribe({
 			next: (response) => {
 				this.loading = false;
 				this.messages.push({ text: response.message, sentByMe: false });
@@ -52,7 +60,9 @@ export class ChatScreenComponent implements AfterViewInit {
 		}
 	}
 
-	isPatientDataAquired(flag: any) {
-		this.patientDataAquired = flag.patientDataAquired;
+	isPatientDataAquired(data: any) {
+		this.patientDataAquired = data;
+		
+		debugger
 	}
 }

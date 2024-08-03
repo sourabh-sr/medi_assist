@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="chat-input-container">
-			<textarea (keyup.enter)="sendMessage()" [(ngModel)]="newMessage" class="chat-input"
+			<textarea (keydown.enter)="sendMessageOnEnter($event)" [(ngModel)]="newMessage" class="chat-input"
 				placeholder="Type your message..."></textarea>
 			<button class="send-button" (click)="sendMessage() ">
 				<mat-icon>send</mat-icon>

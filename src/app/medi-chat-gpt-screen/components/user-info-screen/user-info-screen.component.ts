@@ -31,7 +31,7 @@ export class UserInfoScreenComponent implements OnInit {
 		textarea.style.height = `${textarea.scrollHeight}px`;
 	}
 
-	step = 0;
+	step: any = 0;
 	patient_id: any;
 	patient_name: any;
 	age: any;
@@ -49,11 +49,26 @@ export class UserInfoScreenComponent implements OnInit {
 
 	setStep(index: number) {
 		this.step = index;
+		console.log(this.step)
 	}
 
 	nextStep() {
-		this.step++;
-		this.patientDataAquired.emit({"patientDataAquired": true})
+		this.step = null;
+		this.patientDataAquired.emit({
+			"patientDataAquired": true,
+			"patient_id": this.patient_id,
+			"patient_name": this.patient_name,
+			"baby_age": this.age,
+			"birth_order": this.birth_order,
+			"baby_weight": this.birth_weight,
+			"current_weight": this.current_weight,
+			"route": this.route,
+			"indication": this.indication,
+			"medication": this.medication,
+			"dose": this.dose,
+			"frequency": this.frequency,
+			"doctor_name": this.doctor_name
+		})
 	}
 
 	submit() {

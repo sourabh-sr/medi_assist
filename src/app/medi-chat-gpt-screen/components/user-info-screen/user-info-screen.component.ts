@@ -36,15 +36,17 @@ export class UserInfoScreenComponent implements OnInit {
 	patient_name: any;
 	age: any;
 	birth_order: any;
-	birthOrders: any = ['Singleton', 'Triplet'];
+	birthOrders: any = ['Singleton', 'Twins','Triplet'];
 	birth_weight: any;
 	current_weight: any;
 	routes: any = ['IV', 'Oral'];
 	route: any;
 	indication: any;
 	medication: any;
+	medications: any = ['Alprostadil - Prostaglandin E1', 'Albumin 4 per cent', 'Valganciclovir', 'Aciclovir', 'Adrenaline - Epinephrine for Circulatory Support', 'Ursodeoxycholic Acid', 'Adrenaline - Epinephrine for Resuscitation', 'Adrenaline - Epinephrine for Stridor', 'Trimethoprim Sulfamethoxazole Liquid guide for caregivers', 'Adenosine', 'Amikacin', 'Amoxicillin - Amoxycillin', 'Albumin 20 per cent', 'Vancomycin', 'Acetylcysteine', 'Amiodarone', 'Amlodipine'];
+	company:any;
 	dose: any;
-	frequency: any;
+	frequency: any
 	doctor_name: any;
 
 	setStep(index: number) {

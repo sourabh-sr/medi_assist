@@ -20,7 +20,7 @@
                 </div>
                 <div fxLayout="row" class="two_in_row">
                     <div fxFlex="50" class="usenameInput margin_right">
-                        <input placeholder="Age(In Weeks)" class="custom_input" [(ngModel)]="age" />
+                        <input placeholder="Age(In Weeks)" class="custom_input" [(ngModel)]="age" type=number/>
                     </div>
                     <div fxFlex="50" class="usenameInput">
                         <ng-select placeholder="Birth Order" [items]="birthOrders" [(ngModel)]="birth_order"> </ng-select>
@@ -46,10 +46,14 @@
                         <input placeholder="Indication" class="custom_input" [(ngModel)]="indication" />
                     </div>
                 </div>
-                <div fxLayout="row">
+                <div fxLayout="row" class="two_in_row">
                     <div fxFlex class="usenameInput">
-                        <textarea [(ngModel)]="medication" (input)="onInput($event)" class="auto-resize-textarea"
-                            placeholder="Medication ...."  #textarea></textarea>
+                        <ng-select class="cust-select-box" [items]="medications" placeholder="Medication" [(ngModel)]="medication">
+                            <ng-template ng-option-tmp let-item="item" let-$item="item$" let-index="index">
+                                {{item}}
+                            </ng-template>
+                        </ng-select>
+
                     </div>
                 </div>
                 <div fxLayout="row" class="two_in_row">
